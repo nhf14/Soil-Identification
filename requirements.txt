@@ -6,3 +6,4 @@ plotly
 gdown
 altair
 tensorflow==2.15.1
+tf-keras
