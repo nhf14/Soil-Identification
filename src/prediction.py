@@ -13,17 +13,26 @@ def run():
     CLASS_NAMES = ['Alluvial_Soil', 'Arid_Soil', 'Black_Soil', 'Laterite_Soil', 'Mountain_Soil', 'Red_Soil', 'Yellow_Soil']
     IMG_SIZE = 224
 
+
+
     # Load model from google drive
     @st.cache_resource
     def load_model():
-        model_path = 'model_MobileNetV2.h5'
+        model_path = "model_MobileNetV2.h5"
+
         if not os.path.exists(model_path):
-            with st.spinner("Downloading model from Google Drive..."):
-                # get the file id
+            with st.spinner("Downloading model..."):
                 file_id = "1NxuFM_s5OFl71sxCA5_52oKss_lnVQaQ"
                 url = f"https://drive.google.com/uc?id={file_id}"
+
                 gdown.download(url, model_path, quiet=False)
+
+        st.write("Model exists:", os.path.exists(model_path))
+        st.write("Model size:", os.path.getsize(model_path))
+
         return keras_load_model(model_path)
+    
+# https://drive.google.com/file/d/1NxuFM_s5OFl71sxCA5_52oKss_lnVQaQ/view?usp=sharing
 
     model = load_model()
 
