@@ -7,8 +7,8 @@ def run():
     st.header("🦣Exploratory Data Analysis (EDA)")
 
     def load_data():
-        path = os.path.join('src')
-        df = pd.read_csv(os.path.join(path, 'Original-Dataset.csv'))
+        # path = os.path.join('src')
+        df = pd.read_csv('Original-Dataset.csv')
         return df
     
     # 1. Dataset Overview
